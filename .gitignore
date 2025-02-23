@@ -1,0 +1,18 @@
+```gitignore
+# Ignore Python cache & environment files
+__pycache__/
+venv/
+*.pyc
+db.sqlite3
+*.sqlite3
+*.log
+
+# Ignore Django secrets
+.env
+
+# Ignore node_modules (if using frontend JS tools)
+node_modules/
+
+# Ignore VS Code settings (optional)
+.vscode/
+```

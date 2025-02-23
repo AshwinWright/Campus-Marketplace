@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMPUS MARKETPLACE - Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="textbox">
+                    <input type="text" placeholder="College ID" name="college_id" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="signup">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </form>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

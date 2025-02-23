@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Marketplace - Signup</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h2>Sign Up</h2>
+            <form id="signupForm" action="{% url 'signup' %}" method="POST">
+                {% csrf_token %}
+                <div class="textbox">
+                    <input type="text" placeholder="Full Name" name="name" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" placeholder="College ID" name="college_id" required>
+                </div>
+                <div class="textbox">
+                    <input type="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="textbox">
+                    <input type="text" placeholder="Phone Number" name="phone" required>
+                </div>
+                <div class="textbox">
+                    <select name="department" required>
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="AI">AI</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Civil">Civil</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Confirm Password" name="confirm_password" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <p class="login">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </form>
+
+            <!-- Display messages -->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/signup.js' %}"></script>
+</body>
+</html>
