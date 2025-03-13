@@ -1,10 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>HOME PAGE</title>
-    </head>
-    <body>
-        <h1>Home Page</h1>
-        <p class="login"><a href="{% url 'login' %}">Login</a></p>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Marketplace</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+        <div class="filter-sort">
+            <button class="filter-btn">Filter ▼</button>
+            <button class="sort-btn">Sort ▼</button>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search...">
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'post_ad' %}">Sell</a>
+            <a href="{% url 'login' %}">Login</a> <!-- Chat replaced with Login -->
+            <button class="wishlist-btn">Wishlist</button>
+        </div>
+    </nav>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <div class="product-image">
+                <img src="{% static 'images/placeholder.png' %}" alt="Product Image">
+            </div>
+            <h3>{{ product.title }}</h3>
+            <p>₹{{ product.price }}</p>
+        </div>
+        {% empty %}
+        <p class="no-products">No products available yet.</p>
+        {% endfor %}
+    </div>
+
+</body>
 </html>

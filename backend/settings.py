@@ -131,3 +131,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/login/'  # Change from '/accounts/login/'
+
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Store sessions in the database
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_SAVE_EVERY_REQUEST = True  # Save session every request
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Keep session even after browser closes

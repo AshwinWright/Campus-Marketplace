@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+    <div class="profile-container">
+        <h2>User Profile</h2>
+
+        <p><strong>Name:</strong> <span id="profile-name">{{ user.name }}</span></p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>College ID:</strong> {{ user.college_id }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>Department:</strong> {{ user.department }}</p>
+
+        <!-- Edit Name -->
+        <label for="new-name">Edit Name:</label>
+        <input type="text" id="new-name" placeholder="Enter new name">
+        <button id="save-name">Save</button>
+
+        <button id="logout">Logout</button>
+    </div>
+
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

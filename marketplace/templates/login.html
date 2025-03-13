@@ -14,6 +14,7 @@
             <h2>Login</h2>
             <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <div class="textbox">
                     <input type="text" placeholder="College ID" name="college_id" required>
                 </div>
