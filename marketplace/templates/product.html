@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ product.title }} - Campus Marketplace{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="product-details-container">
+    <!-- Product Image Gallery -->
+    <div class="product-gallery">
+        <div class="main-image">
+            <img src="{% static 'images/placeholder.png' %}" alt="{{ product.title }}">
+        </div>
+        <div class="thumbnail-grid">
+            <div class="thumbnail">
+                <img src="{% static 'images/placeholder.png' %}" alt="Thumbnail 1">
+            </div>
+            <div class="thumbnail">
+                <img src="{% static 'images/placeholder.png' %}" alt="Thumbnail 2">
+            </div>
+            <div class="thumbnail">
+                <img src="{% static 'images/placeholder.png' %}" alt="Thumbnail 3">
+            </div>
+            <div class="thumbnail">
+                <img src="{% static 'images/placeholder.png' %}" alt="Thumbnail 4">
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Title and Reviews -->
+    <div class="product-header">
+        <h1>{{ product.title }}</h1>
+        <div class="reviews">
+            <span>⭐️⭐️⭐️⭐️⭐️</span>
+            <span>(1 Review)</span>
+        </div>
+    </div>
+
+    <!-- Price and Add to Wishlist Button -->
+    <div class="product-price">
+        <p class="price">₹{{ product.price }}</p>
+        <button class="btn-add-to-wishlist">Add To Wishlist</button>
+    </div>
+
+    <!-- Posted By and Chat Button -->
+    <div class="posted-by">
+        <p><strong>Posted by:</strong> {{ seller.name }}</p>
+        <button class="btn-chat">Chat</button>
+    </div>
+
+    <!-- Key Details -->
+    <div class="key-details">
+        <h3>Key Details</h3>
+        <ul>
+            <li><strong>Year:</strong> {{ product.year }}</li>
+            <li><strong>Department:</strong> {{ product.department }}</li>
+            <li><strong>Category:</strong> {{ product.product_type }}</li>
+        </ul>
+    </div>
+
+    <!-- Tags -->
+    <div class="tags">
+        <h3>Tags</h3>
+        <div class="tag-list">
+            <span class="tag">Tag 1</span>
+            <span class="tag">Tag 2</span>
+            <span class="tag">Tag 3</span>
+        </div>
+    </div>
+
+    <!-- Product Description -->
+    <div class="product-description">
+        <h3>Details</h3>
+        <p>{{ product.description }}</p>
+    </div>
+</div>
+{% endblock %}

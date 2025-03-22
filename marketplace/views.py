@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 from .models import UserProfile
@@ -183,3 +183,11 @@ def update_profile(request):
             return JsonResponse({"success": False, "error": "User not found"}, status=400)
 
     return JsonResponse({"success": False, "error": "Invalid request"}, status=400)
+
+
+
+def product_view(request, product_id):
+    """Fetch and display a single product's details."""
+    product = get_object_or_404(Product, id=product_id)
+    seller = get_object_or_404(UserProfile, user_id=product.user_id)  # Fetch seller info
+    return render(request, "product.html", {"product": product, "seller": seller})
